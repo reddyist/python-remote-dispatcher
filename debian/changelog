@@ -1,0 +1,5 @@
+python-remote-dispatcher (1.0.0) unstable; urgency=low
+
+  *  Utility for remote login, remote copy and remote command execution 
+
+ -- Ugandhar Reddy <reddyist@gmail.com>  Sat, 30 Jul 2011 03:08:56 +0300

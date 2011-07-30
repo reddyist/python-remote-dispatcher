@@ -1,0 +1,16 @@
+Source: python-remote-dispatcher
+Section: python
+Priority: optional
+Maintainer: Ugandhar Reddy <reddyist@gmail.com>
+Build-Depends-Indep: debhelper (>= 7), python-support
+XS-Python-Version: all
+Standards-Version: 3.8.4
+
+Package: python-remote-dispatcher
+Architecture: all
+Depends: ${python:Depends}, 
+	python-paramiko (>= 1.5.2-0.1), 
+XB-Python-Version: all
+Description: remote copy and command execution
+ Provides an interface for remote authentication, copying and command execution
+
