@@ -1,0 +1,63 @@
+rdispatcher:
+    An interface for secure copy and command execution on a remote
+    system. At object instantiation it performs authentication, creates
+    transport object which can used in establishing a session with server. A
+    single session b/w local and remote system can be used in multiple channels
+    i.e multiple copies or command execution.
+
+Usage:
+    Authentication:
+        The rdispatcher can support dual authentication i.e password or key.
+        
+        import rdispatcher
+
+        # default initialization: by default it takes the logged in user name and private key (rsa or dsa from ~/.ssh/id_xx)
+        rhandle = rdispatcher.RemoteDispatcher('machinename')
+        
+        # password based authentication
+        rhandle = rdispatcher.RemoteDispatcher('machinename', username='anonymous', password='XXXXX')
+
+        or
+        # key based authentication 
+        rhandle = rdispatcher.RemoteDispatcher('machinename', username='anonymous', pkey='/xx/xx/.id_xsa')
+        
+
+    Secure copy:
+        Copies a file[s] or directories between the local and remote host
+
+        #Copying a single file
+        rhandle.scp('/src/path/xxx', '/dest/path/')
+
+        #Copying directory recursively
+        rhandle.scp('/src/path/dir', '/dest/path')
+
+
+    Remote command execution:
+        Executes a command on remote host
+
+        rhandle.execute('ls -l /proc/cpuinfo')
+
+
+    SFTP client:
+        The utility also exposes the SFTP interface for running standard remote ftp commands.
+
+        # establish ftp session
+        rhandle.connect()
+
+        # make directory on remote host
+        rhandle.mkdir('/remote/host/dir')
+
+        # remove file
+        rhandle.remove('/remote/host/dir/file')
+
+        # remove directory
+        rhandle.rmdir('/remote/host/dir')
+
+    
+    The End:
+        Closes the remote sftp connection (optional)
+        
+        rhandle.close()
+        
+        
+        
